@@ -6,11 +6,9 @@ var _ = require('lodash'),
     app = {};
 
 co(function *() {
-    yield *reqmany('sys', function *(name, module) {
+    yield *reqmany(['sys', 'app'], function *(name, module) {
         yield module.call(app);
     });
-
-    
 }).catch(function (err) {
     console.log('\nFATAL ERROR!\n');
     console.trace(err.stack.replace('\\n', '\n'));

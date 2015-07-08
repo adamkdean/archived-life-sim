@@ -2,9 +2,9 @@
   "name": "life",
   "version": "1.0.0",
   "description": "Life simulator",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node --harmony src/app.js"
+    "start": "node --harmony src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
     "co": "^4.5.4",
     "keypress": "^0.2.1",
     "lodash": "^3.10.0",
-    "reqmany": "0.0.1"
+    "reqmany": "0.0.3"
   }
 }

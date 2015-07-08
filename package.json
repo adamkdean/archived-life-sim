@@ -15,6 +15,7 @@
   "dependencies": {
     "charm": "^1.0.0",
     "co": "^4.5.4",
+    "keypress": "^0.2.1",
     "lodash": "^3.10.0",
     "reqmany": "0.0.1"
   }

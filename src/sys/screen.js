@@ -7,7 +7,7 @@ module.exports = exports = function *() {
     charm.window = {};
     charm.window.width = windowSize[0];
     charm.window.height = windowSize[1];
-    charm.pipe(process.stdout)
+    charm.pipe(process.stdout);
     charm.reset();
 
     this.screen = charm;

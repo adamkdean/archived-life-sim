@@ -2,14 +2,20 @@
   "name": "life",
   "version": "1.0.0",
   "description": "Life simulator",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "nodemon --harmony src/index.js"
+    "start": "node --harmony src/app.js"
   },
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:adamkdean/life.git"
   },
   "author": "Adam K Dean <adamkdean@googlemail.com> (http://www.adamkdean.co.uk/)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "charm": "^1.0.0",
+    "co": "^4.5.4",
+    "lodash": "^3.10.0",
+    "reqmany": "0.0.1"
+  }
 }

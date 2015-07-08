@@ -1,13 +1,12 @@
 'use strict';
 
-var world = {},
-    colors = ['green', 'blue', 'red'],
-    colorIndex = 0;
+var world = {};
 
 world.init = function () {
     world.width = this.screen.window.width;
     world.height = this.screen.window.height;
     world.generateMap();
+    world.generateGrass();
 };
 
 world.generateMap = function () {
@@ -25,8 +24,24 @@ world.generateMap = function () {
     }
 };
 
-world.getTileCharacter = function (tile) {
-    var biggestThing, character;
+world.generateGrass = function () {
+    for (let x = 0; x < world.width; x++) {
+        for (let y = 0; y < world.height; y++) {
+            let rnd = (Math.random() * 100) + 1;
+            if (rnd <= 10) {
+                world.map[x][y].things.push({
+                    type: 'grass',
+                    size: 1,
+                    character: ',',
+                    color: 'green'
+                });
+            }
+        }
+    }
+};
+
+world.getTileOutput = function (tile) {
+    var biggestThing;
 
     if (tile.things && tile.things.length > 0) {
         for (let i = 0; i < tile.things.length; i++) {
@@ -34,25 +49,30 @@ world.getTileCharacter = function (tile) {
                 biggestThing = tile.things[i];
             }
         }
-        character = biggestThing.character || '?';
-    } else {
-        character = '.';
-    }
 
-    return character;
+        return {
+            character: biggestThing.character || '?',
+            color: biggestThing.color || 'white'
+        };
+    } else {
+        return {
+            character: '.',
+            color: 'white'
+        };
+    }
 };
 
 world.render = function () {
     for (let x = 0; x < world.width; x++) {
         for (let y = 0; y < world.height; y++) {
             let tile = world.map[x][y],
-                char = world.getTileCharacter(tile);
+                output = world.getTileOutput(tile);
 
             this.screen
                 .position(x, y)
-                .foreground('green')
                 .cursor(false)
-                .write(char);
+                .foreground(output.color)
+                .write(output.character);
         }
     }
 };

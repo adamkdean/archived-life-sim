@@ -1,0 +1,15 @@
+{
+  "name": "life",
+  "version": "1.0.0",
+  "description": "Life simulator",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --harmony src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:adamkdean/life.git"
+  },
+  "author": "Adam K Dean <adamkdean@googlemail.com> (http://www.adamkdean.co.uk/)",
+  "license": "MIT"
+}

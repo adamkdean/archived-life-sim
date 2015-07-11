@@ -1,14 +1,30 @@
 'use strict';
 
-var charm = require('charm')(),
+var screen = require('charm')(),
     windowSize = process.stdout.getWindowSize();
 
 module.exports = exports = function *() {
-    charm.window = {};
-    charm.window.width = windowSize[0];
-    charm.window.height = windowSize[1];
-    charm.pipe(process.stdout);
-    charm.reset();
+    screen.pipe(process.stdout);
+    screen.reset();
 
-    this.screen = charm;
+    screen.window = {
+        width: windowSize[0],
+        height: windowSize[1]
+    };
+
+    screen.ui = {};
+    screen.ui.map = {
+        width: this.config.ui.map.width,
+        height: this.config.ui.map.height,
+        left: 1 + (screen.window.width - this.config.ui.map.width) / 2,
+        top: this.config.ui.margin
+    };
+    screen.ui.text = {
+        width: this.config.ui.text.width,
+        height: this.config.ui.text.height,
+        left: 1 + (screen.window.width - this.config.ui.text.width) / 2,
+        top: screen.ui.map.height + screen.ui.map.top + this.config.ui.margin
+    }
+
+    this.screen = screen;
 };

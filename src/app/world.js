@@ -3,8 +3,8 @@
 var world = {};
 
 world.init = function () {
-    world.width = this.screen.window.width;
-    world.height = this.screen.window.height;
+    world.width = this.screen.ui.map.width;
+    world.height = this.screen.ui.map.height;
     world.generateMap();
     world.generateGrass();
 };
@@ -63,13 +63,16 @@ world.getTileOutput = function (tile) {
 };
 
 world.render = function () {
+    var offsetX = this.screen.ui.map.left,
+        offsetY = this.screen.ui.map.top;
+
     for (let x = 0; x < world.width; x++) {
         for (let y = 0; y < world.height; y++) {
             let tile = world.map[x][y],
                 output = world.getTileOutput(tile);
 
             this.screen
-                .position(x, y)
+                .position(offsetX + x, offsetY + y)
                 .cursor(false)
                 .foreground(output.color)
                 .write(output.character);
@@ -79,5 +82,5 @@ world.render = function () {
 
 module.exports = exports = function *() {
     world.init.call(this);
-    setInterval(world.render.bind(this), this.config.renderInterval);
+    setInterval(world.render.bind(this), this.config.intervals.render);
 };

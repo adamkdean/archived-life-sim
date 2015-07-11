@@ -1,8 +1,21 @@
 'use strict';
 
 var config = {
-    renderInterval: 250,
-    tickInterval: 33
+    intervals: {
+        render: 33,
+        tick: 250
+    },
+    ui: {
+        margin: 2,
+        map: {
+            width: 80,
+            height: 20
+        },
+        text: {
+            width: 80,
+            height: 5
+        }
+    }
 };
 
 module.exports = exports = function *() {
